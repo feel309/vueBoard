@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>📋 게시판</h1>
-    <BoardList />
+    <BoardList /> <!-- 게시글 목록 컴포넌트 -->
   </div>
 </template>
 

@@ -5,7 +5,9 @@
     <div class="meta">
       <span>✍ {{ post.writer }}</span>
       <div class="actions">
+        <!-- 수정 버튼 클릭 시 edit 이벤트 발생 -->
         <button @click="$emit('edit', post)">✏️ 수정</button>
+        <!-- 삭제 버튼 클릭 시 deletePost 메서드 호출 -->
         <button @click="deletePost" class="delete">🗑️ 삭제</button>
       </div>
     </div>
@@ -15,12 +17,13 @@
 <script>
 import axios from 'axios';
 export default {
-  props: ['post'],
+  props: ['post'], // 상위에서 게시글 정보 전달
   methods: {
     deletePost() {
+      // 사용자 확인 후 삭제 요청
       if (confirm('정말 삭제하시겠습니까?')) {
         axios.delete(`/api/boards/${this.post.id}`)
-          .then(() => this.$emit('deleted'));
+          .then(() => this.$emit('deleted')); // 부모에게 삭제 완료 알림
       }
     }
   }
