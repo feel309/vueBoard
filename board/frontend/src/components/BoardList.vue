@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import boardApi from '@/api/boardApi';
 import BoardItem from './BoardItem.vue';
 import BoardForm from './BoardForm.vue';
 
@@ -30,9 +30,13 @@ export default {
     };
   },
   methods: {
-    fetchPosts() {
-      // 게시글 전체 가져오기
-      axios.get('/api/boards').then(res => this.posts = res.data);
+    async fetchPosts() {
+      try {
+        const res = await boardApi.getAll();
+        this.posts = res.data;
+      } catch (err) {
+        console.error('게시글 불러오기 실패:', err);
+      }
     },
     editPost(post) {
       // 수정 버튼 클릭 시 해당 게시글 복사해서 전달
