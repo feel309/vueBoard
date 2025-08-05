@@ -27,7 +27,7 @@ public class BoardController {
     }
 
     @GetMapping("/{id}")
-    public Board getById(@PathVariable Long id) {
+    public Board getById(@PathVariable(name="id") Long id) {
         return boardService.get(id);
     }
 

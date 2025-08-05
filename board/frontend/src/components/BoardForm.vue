@@ -69,14 +69,8 @@ export default {
 .form-wrapper {
   background: #fff;
   padding: 20px;
-  border: 1px solid #e0e0e0;
   border-radius: 12px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-}
-h2 {
-  margin-bottom: 15px;
-  color: #2c3e50;
 }
 input, textarea {
   width: 100%;
@@ -84,7 +78,6 @@ input, textarea {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 1em;
 }
 textarea {
   min-height: 100px;

@@ -1,6 +1,6 @@
 <template>
   <div class="board-item">
-    <h3>{{ post.title }}</h3>
+    <h3 @click="goToDetail" class="clickable">{{ post.title }}</h3>
     <p class="content">{{ post.content }}</p>
     <div class="meta">
       <span>✍ {{ post.writer }}</span>
@@ -16,14 +16,17 @@
 
 <script>
 import axios from 'axios';
+
 export default {
-  props: ['post'], // 상위에서 게시글 정보 전달
+  props: ['post'],
   methods: {
+    goToDetail() {
+      this.$router.push(`/boards/${this.post.id}`);
+    },
     deletePost() {
-      // 사용자 확인 후 삭제 요청
       if (confirm('정말 삭제하시겠습니까?')) {
         axios.delete(`/api/boards/${this.post.id}`)
-          .then(() => this.$emit('deleted')); // 부모에게 삭제 완료 알림
+          .then(() => this.$emit('deleted'));
       }
     }
   }
@@ -37,11 +40,17 @@ export default {
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 h3 {
   margin: 0;
   color: #2c3e50;
+}
+.clickable {
+  cursor: pointer;
+  color: #2c7be5;
+}
+.clickable:hover {
+  text-decoration: underline;
 }
 .content {
   margin: 10px 0;

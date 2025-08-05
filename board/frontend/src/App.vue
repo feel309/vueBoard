@@ -1,14 +1,9 @@
 <template>
   <div id="app">
     <h1>📋 게시판</h1>
-    <BoardList /> <!-- 게시글 목록 컴포넌트 -->
+    <router-view />
   </div>
 </template>
-
-<script>
-import BoardList from './components/BoardList.vue';
-export default { components: { BoardList } }
-</script>
 
 <style scoped>
 #app {

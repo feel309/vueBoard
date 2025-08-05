@@ -3,6 +3,7 @@ import axios from './axiosInstance'; // 공통 axios 인스턴스를 불러옵�
 
 const boardApi = {
   getAll: () => axios.get('/boards'),
+  getById: (id) => axios.get(`/boards/${id}`),
   create: (data) => axios.post('/boards', data),
   update: (id, data) => axios.put(`/boards/${id}`, data),
   delete: (id) => axios.delete(`/boards/${id}`)
